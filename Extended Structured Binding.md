@@ -26,7 +26,7 @@ However, a core limitation of structured bindings is their inability to assign t
 std::tuple<Token, Value> scan(); // scans the next line on each invokation
 
 for (auto [token, value] = scan(); token != EOF; std::tie(token, value) = scan()) {
-	// ... start parsing
+	// ... parse token
 }
 ```
 
@@ -80,17 +80,11 @@ Also... discuss rvalue-references?
 **1. Assigning to Existing Variables Only**
 
 ```
-int x;
-int y;
-std::pair<int, int> p = {10, 20};
+MyTuple<Token, Value> scan(); // scans the next line on each invokation
 
-// Proposed: Assigns to existing variables x and y
-auto [&x, &y] = p;
-
-// The above is equivalent to:
-// x = p.first;
-// y = p.second;
-
+for (auto [token, value] = scan(); token != EOF; auto [&token, &value] = scan()) {
+	// ... parse token
+}
 ```
 
 **2. Hybrid Declaration and Assignment**
@@ -219,7 +213,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQzOTA3NDI2LDExODQwMjE0MTgsMTIxMj
-YwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5OSwtODU1NjA3Nzgs
-MzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbLTMxMjc4Nzk0NiwxMTg0MDIxNDE4LDEyMT
+I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
+LDMyMjM0NTc4MF19
 -->
