@@ -24,11 +24,10 @@ However, a core limitation of structured bindings is their inability to assign t
 struct MyPair { ... };
 
 MyPair<int, const char *> *get_users();
+auto count = get_users_count();
+auto users = get_users();
 
-int user_id;
-std::string user_name;
-
-// Using std::tie to assign
+for (auto [age, name] = 
 std::tie(user_id, user_name) = get_user_info();
 
 ```
@@ -193,6 +192,6 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjg0MzI1MCwtNTI3OTEwMjk5LC04NT
+eyJoaXN0b3J5IjpbLTgzNDM0OTUyNCwtNTI3OTEwMjk5LC04NT
 U2MDc3OCwzMjIzNDU3ODBdfQ==
 -->
