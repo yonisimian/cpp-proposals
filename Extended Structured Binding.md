@@ -75,48 +75,9 @@ auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
 TODO: compare `auto &[x, y]` to `auto [&x, &y]` and `auto &[&x, &y]`.
 Also... discuss rvalue-references?
 
-### Alternative Proposals
-
-#### `using` keyword
-
-```
-int x;
-auto [using x, y] = get_values();
-```
-
-A bit less intuitive imo (Yoni).
-
-#### `let` keyword
-```
-int x;
-let [&x, y] = get_values();
-```
-More robust, yet has a potential 
-Both options have merit, but **Option 2 (the `let` keyword)** is the more robust and future-proof choice. The `&` symbol approach (Option 1) has potential for ambiguity, especially when considering more advanced reference types, and could lead to complex reference collapsing rules that are not immediately obvious to developers.
-
-The `let` keyword, on the other hand, provides a clear, non-ambiguous signal to the parser. The proposed syntax `let [&x, auto y] = get_pair();` is explicit and readable. It directly addresses the need to mix new and existing variables and aligns with the general direction of the C++ language.
-
-Therefore, I recommend proceeding with the `let` keyword approach for the full proposal.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #### Examples
 
 **1. Assigning to Existing Variables Only**
-
-C++
 
 ```
 int x;
@@ -124,7 +85,7 @@ int y;
 std::pair<int, int> p = {10, 20};
 
 // Proposed: Assigns to existing variables x and y
-[assigns x, assigns y] = p;
+auto [&x, &y] = p;
 
 // The above is equivalent to:
 // x = p.first;
@@ -169,6 +130,24 @@ std::tuple<int, std::string> get_user_data();
 // x = std::get<1>(get_user_data());
 
 ```
+
+### Alternative Proposals
+
+#### `using` keyword
+
+```
+int x;
+auto [using x, y] = get_values();
+```
+
+A bit less intuitive imo (Yoni).
+
+#### `let` keyword
+```
+int x;
+let [&x, y] = get_values();
+```
+More robust, yet has a potential of ambiguity with Pattern Matching.
 
 ----------
 
@@ -240,7 +219,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwNzA1NDY4MywxMTg0MDIxNDE4LDEyMT
-I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
-LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbMjQzOTA3NDI2LDExODQwMjE0MTgsMTIxMj
+YwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5OSwtODU1NjA3Nzgs
+MzIyMzQ1NzgwXX0=
 -->
