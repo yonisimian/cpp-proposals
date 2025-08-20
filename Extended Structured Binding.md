@@ -27,7 +27,7 @@ MyPair<int, const char *> *get_users();
 auto count = get_users_count();
 auto users = get_users();
 
-for (auto [age, name] = 
+for (auto [age, name] = users[0]; count > 0; 
 std::tie(user_id, user_name) = get_user_info();
 
 ```
@@ -192,6 +192,6 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNDM0OTUyNCwtNTI3OTEwMjk5LC04NT
-U2MDc3OCwzMjIzNDU3ODBdfQ==
+eyJoaXN0b3J5IjpbOTQ1MjU3NzM3LC01Mjc5MTAyOTksLTg1NT
+YwNzc4LDMyMjM0NTc4MF19
 -->
