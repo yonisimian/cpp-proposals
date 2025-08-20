@@ -1,10 +1,10 @@
 
 ### C++ Proposal: Structured Bindings for Existing Variables
 
-**Document Number:** PxxxxR0
-**Date:** August 23, 2025
-**Audience:** Evolution Working Group (EWG)
-**Authors:** Yehonatan Simian, ... (add your names here)
+- **Document Number:** PxxxxR0
+- **Date:** August 23, 2025
+- **Audience:** Evolution Working Group (EWG)
+- **Authors:** Yehonatan Simian, ... (add your names here)
 
 ----------
 
@@ -160,7 +160,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MzA1NjQwMywtMzEyNzg3OTQ2LDExOD
+eyJoaXN0b3J5IjpbLTcxMTA5MjYyMSwtMzEyNzg3OTQ2LDExOD
 QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
 OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
