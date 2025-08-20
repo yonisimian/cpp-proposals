@@ -145,7 +145,7 @@ This is a language extension, not a standard library addition. A compiler would 
 
 ### Previous Papers
 
--   **P0144R2 - `Structured Bindings`**: This paper introduced structured bindings. Section 3.3 explicitly mentions that structured bindings should not be used for assignment to existing variables "at least for now", see quote below. This proposal provides such a use case (embedded systems) and a strong argument for uniform syntax, directly 	addressing the original paper's concern.
+-   **P0144R2 - `Structured Bindings`**: This paper introduced structured bindings. Section 3.3 explicitly mentions that structured bindings should not be used for assignment to existing variables "at least for now", see quote below. This proposal provides a use case (embedded systems) and a strong argument for uniform syntax, directly addressing the original paper's concern.
 > We know of no use cases where this is better than using `std::tie`, [...] This can always be proposed separately later as a pure extension if desired.
     
 -   **P2392 - `C++ Standard Library Support for Structured Bindings`**: While not directly related to this proposal, Herb Sutter's paper and similar documents highlight the evolution of structured bindings and the community's interest in extending their utility.
@@ -160,7 +160,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzA2NTY2MjAsLTMxMjc4Nzk0NiwxMT
-g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
-OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbLTg2MzA1NjQwMywtMzEyNzg3OTQ2LDExOD
+QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
+OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
