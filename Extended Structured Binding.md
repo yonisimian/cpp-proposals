@@ -73,12 +73,12 @@ This syntax seamlessly allows for mixing new and existing variables, a key requi
 ```
 int x;
 auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
-
 ```
 
 **Reference Collapsing:**
 
-TODO: compare `auto &[x, y]` to `
+TODO: compare `auto &[x, y]` to `auto [&x, &y]` and `auto &[&x, &y]`.
+Also... talk about rvalue-references?
 
 #### Option 2: The `let` Keyword
 
@@ -258,7 +258,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU3MzUwMjE2LDExODQwMjE0MTgsMTIxMj
+eyJoaXN0b3J5IjpbMjM4NTU1MTg4LDExODQwMjE0MTgsMTIxMj
 YwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5OSwtODU1NjA3Nzgs
 MzIyMzQ1NzgwXX0=
 -->
