@@ -41,26 +41,103 @@ This proposal aims to address these issues by extending structured binding synta
 
 ----------
 
-### Proposal (Option #1)
+### Proposal
 
-We propose to extend structured binding syntax to allow for the use of pre-existing variables in the binding list. This is achieved by omitting the `auto` keyword and introducing a new contextual keyword, `assigns`, before the name of any variable that is to be assigned.
+We've explored several syntactic approaches to this problem, guided by the following principles: avoiding parsing ambiguities, maintaining a high degree of intuition, and leveraging existing language features where possible. Below are the two most promising options.
 
-#### Syntax
 
-The proposed syntax for a structured assignment is as follows:
+#### Option 1: The `&` Symbol
 
-`[binding-list] = expression;`
+This option extends the `auto` structured binding syntax to use the `&` symbol inside the binding list to denote a binding to an existing variable.
+
+**Syntax:**
+
+`auto [binding-list] = expression;`
 
 The `binding-list` would be a comma-separated list of:
 
--   `assigns variable-name`: to assign to an existing variable.
+-   `name`: to declare a new variable.
     
--   `auto variable-name`: to declare and initialize a new variable.
+-   `&name`: to assign to an existing variable.
     
--   `auto& variable-name`: to declare and initialize a new reference.
+-   `&name&`: to collapse a reference.
     
 
-This allows for a hybrid approach, where some variables in the list are new and others are existing.
+**Explanation:**
+
+The `&` symbol already signifies a reference in C++. By allowing it inside the structured binding list, we can extend this meaning to "referencing an existing variable in the scope." This approach is intuitive and consistent with C++'s syntax for references.
+
+When an existing variable is prefixed with `&`, the compiler would find the variable in the current scope and assign the corresponding element of the tuple-like object to it using `operator=`. The `auto` keyword at the beginning of the statement would signal that this is a structured binding operation.
+
+**Mixing New and Existing Variables:**
+
+This syntax seamlessly allows for mixing new and existing variables, a key requirement.
+
+C++
+
+```
+int x;
+auto [y, &x] = get_pair(); // y is a new variable, x is assigned to
+
+```
+
+**Reference Collapsing:**
+
+Reference collapsing is a crucial consideration for this approach. C++'s reference collapsing rules (`T& &` becomes `T&`, `T& &&` becomes `T&`, `T&& &` becomes `T&`, and `T&& &&` becomes `T&&`) ensure that the resulting reference has the correct value category. We can leverage these rules for our `&` syntax.
+
+If `get_pair()` returns a `std::pair<T, U>`, and the binding list contains `&x` where `x` is of type `V`, the type of the binding for `x` would be deduced as `U&`. The compiler would then check for reference collapsing. To explicitly deal with move semantics, a new syntax like `&&` or a keyword could be proposed, but let's stick to the simplest case: `&` for assignment.
+
+To handle cases where a variable is an l-value reference, we could propose `auto [&x&] = ...` to allow for the collapsing of references, or a more simplified approach: allow the compiler to handle reference collapsing automatically based on the type of the variable and the return type.
+
+#### Option 2: The `let` Keyword
+
+This option introduces the contextual keyword `let`, which is already being considered for C++29's pattern matching. We can leverage this keyword for structured assignments.
+
+**Syntax:**
+
+`let [binding-list] = expression;`
+
+The `binding-list` would contain variables to be assigned to, as the `let` keyword would signal that this is an assignment operation.
+
+**Parsing Analysis:**
+
+You are correct that parsing is a critical consideration. The C++ parser, being a greedy, top-down parser, needs to resolve ambiguities early. A statement beginning with `[` is ambiguous with a lambda capture list. However, a statement beginning with `let` is not. The moment the parser sees `let`, it can determine that the following `[` is the start of a structured binding list for assignment, not a lambda. This resolves the parsing ambiguity completely.
+
+**Mixing New and Existing Variables:**
+
+The primary challenge with this approach is allowing for the mixing of new and existing variables, as a key requirement. `let` by its nature implies a declaration. We can propose a syntax where `let` is used for assignment, and we use a separate keyword for declaration within the binding list.
+
+C++
+
+```
+int x;
+let [&x, auto y] = get_pair(); // x is assigned to, y is a new variable
+
+```
+
+This syntax, using `let` for the assignment operation and `auto` for a new variable inside the list, is a strong candidate. It is a bit verbose, but it's explicit and avoids any ambiguity. It aligns well with the future direction of C++ with pattern matching.
+
+### Recommendation
+
+Both options have merit, but **Option 2 (the `let` keyword)** is the more robust and future-proof choice. The `&` symbol approach (Option 1) has potential for ambiguity, especially when considering more advanced reference types, and could lead to complex reference collapsing rules that are not immediately obvious to developers.
+
+The `let` keyword, on the other hand, provides a clear, non-ambiguous signal to the parser. The proposed syntax `let [&x, auto y] = get_pair();` is explicit and readable. It directly addresses the need to mix new and existing variables and aligns with the general direction of the C++ language.
+
+Therefore, I recommend proceeding with the `let` keyword approach for the full proposal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Examples
 
@@ -190,7 +267,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NDAyMTQxOCwxMjEyNjA1OTQsMjA3Nz
-QwMzcxMywtNTI3OTEwMjk5LC04NTU2MDc3OCwzMjIzNDU3ODBd
-fQ==
+eyJoaXN0b3J5IjpbMTU4NDg1MzQ2OSwxMTg0MDIxNDE4LDEyMT
+I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
+LDMyMjM0NTc4MF19
 -->
