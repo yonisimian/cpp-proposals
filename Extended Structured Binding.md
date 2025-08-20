@@ -89,8 +89,6 @@ for (auto [token, value] = scan(); token != EOF; auto [&token, &value] = scan())
 
 **2. Hybrid Declaration and Assignment**
 
-C++
-
 ```
 Age age;
 
@@ -161,7 +159,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzY1NjUwNjksLTMxMjc4Nzk0NiwxMT
-g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
-OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbMjA5NjM2MDUwOCwtMzEyNzg3OTQ2LDExOD
+QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
+OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
