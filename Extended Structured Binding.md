@@ -43,12 +43,7 @@ This proposal aims to address these issues by extending structured binding synta
 
 ### Proposal
 
-We've explored several syntactic approaches to this problem, guided by the following principles: avoiding parsing ambiguities, maintaining a high degree of intuition, and leveraging existing language features where possible. Below are the two most promising options.
-
-
-#### Option 1: The `&` Symbol
-
-This option extends the `auto` structured binding syntax to use the `&` symbol inside the binding list to denote a binding to an existing variable.
+Extend the `auto` structured binding syntax to use the `&` symbol inside the binding list to denote a binding to an existing variable.
 
 **Syntax:**
 
@@ -78,37 +73,9 @@ auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
 **Reference Collapsing:**
 
 TODO: compare `auto &[x, y]` to `auto [&x, &y]` and `auto &[&x, &y]`.
-Also... talk about rvalue-references?
+Also... discuss rvalue-references?
 
-#### Option 2: The `let` Keyword
-
-This option introduces the contextual keyword `let`, which is already being considered for C++29's pattern matching. We can leverage this keyword for structured assignments.
-
-**Syntax:**
-
-`let [binding-list] = expression;`
-
-The `binding-list` would contain variables to be assigned to, as the `let` keyword would signal that this is an assignment operation.
-
-**Parsing Analysis:**
-
-The C++ parser, being a greedy, top-down parser, needs to resolve ambiguities early. A statement beginning with `[` is ambiguous with a lambda capture list. However, a statement beginning with `let` is not. The moment the parser sees `let`, it can determine that the following `[` is the start of a structured binding list for assignment, not a lambda. This resolves the parsing ambiguity for now.
-
-**Mixing New and Existing Variables:**
-
-The primary challenge with this approach is allowing for the mixing of new and existing variables, as a key requirement. `let` by its nature implies a declaration. We can propose a syntax where `let` is used for assignment, and we use a separate keyword for declaration within the binding list.
-
-C++
-
-```
-int x;
-let [&x, auto y] = get_pair(); // x is assigned to, y is a new variable
-
-```
-
-This syntax, using `let` for the assignment operation and `auto` for a new variable inside the list, is a strong candidate. It is a bit verbose, but it's explicit and avoids any ambiguity. It aligns well with the future direction of C++ with pattern matching.
-
-### Recommendation
+### Omi
 
 Both options have merit, but **Option 2 (the `let` keyword)** is the more robust and future-proof choice. The `&` symbol approach (Option 1) has potential for ambiguity, especially when considering more advanced reference types, and could lead to complex reference collapsing rules that are not immediately obvious to developers.
 
@@ -258,7 +225,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNzg1NTkzMSwxMTg0MDIxNDE4LDEyMT
+eyJoaXN0b3J5IjpbLTY2NzA3ODI5NywxMTg0MDIxNDE4LDEyMT
 I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
 LDMyMjM0NTc4MF19
 -->
