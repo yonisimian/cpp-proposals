@@ -120,10 +120,22 @@ Structured bindings are a well-loved feature for their intuitive nature. `std::t
 
 ### Alternative Syntaxes Considered
 
-1.  **`[using x, y] = ...`**: The use of `using` was initially considered. However, `using` is an overloaded keyword in C++ with specific meanings (e.g., namespace and declaration directives). Reusing it as a contextual keyword could lead to parsing ambiguities and developer confusion. The proposed `assigns` keyword is less likely to collide with existing syntax and clearly states the intent.
-    
-2.  **`[x, y] = ...` (without `auto`)**: This was also considered but would introduce ambiguities with existing syntax, such as lambdas. For example, `[x, y] = foo();` could be misread. The explicit keyword `assigns` prevents this ambiguity.
- 
+#### `using` keyword
+
+```
+int x;
+auto [using x, y] = get_values();
+```
+
+A bit less intuitive imo (Yoni).
+
+#### `let` keyword
+```
+int x;
+let [&x, y] = get_values();
+```
+More robust, yet has a potential of ambiguity with Pattern Matching.
+
 
 ----------
 
@@ -148,7 +160,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NzgwNjcxNiwtMzEyNzg3OTQ2LDExOD
-QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
-OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbLTIwOTU1Mzg0NzAsLTMxMjc4Nzk0NiwxMT
+g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
+OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
 -->
