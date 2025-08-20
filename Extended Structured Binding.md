@@ -4,7 +4,7 @@
 **Document Number:** PxxxxR0
 **Date:** August 23, 2025
 **Audience:** Evolution Working Group (EWG)
-**Authors:** Yehonatan Simian, ... honestly idc, just add your names here :)
+**Authors:** Yehonatan Simian, ... (add your names here)
 
 ----------
 
@@ -159,8 +159,9 @@ This is a language extension, not a standard library addition. A compiler would 
 This proposal for structured bindings for existing variables offers a clean, consistent, and powerful language feature. It solves a real-world problem for developers in constrained environments and provides a more intuitive syntax for all C++ programmers. The proposed syntax is explicit, avoids keyword ambiguity, and aligns with the modern direction of the C++ language.
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyODQzMzUwNywtMzEyNzg3OTQ2LDExOD
-QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
-OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbLTE2NzQxMzA0MDUsLTMxMjc4Nzk0NiwxMT
+g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
+OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
 -->
