@@ -70,8 +70,6 @@ When an existing variable is prefixed with `&`, the compiler would find the vari
 
 This syntax seamlessly allows for mixing new and existing variables, a key requirement.
 
-C++
-
 ```
 int x;
 auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
@@ -80,11 +78,7 @@ auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
 
 **Reference Collapsing:**
 
-Reference collapsing is a crucial consideration for this approach. C++'s reference collapsing rules (`T& &` becomes `T&`, `T& &&` becomes `T&`, `T&& &` becomes `T&`, and `T&& &&` becomes `T&&`) ensure that the resulting reference has the correct value category. We can leverage these rules for our `&` syntax.
-
-If `get_pair()` returns a `std::pair<T, U>`, and the binding list contains `&x` where `x` is of type `V`, the type of the binding for `x` would be deduced as `U&`. The compiler would then check for reference collapsing. To explicitly deal with move semantics, a new syntax like `&&` or a keyword could be proposed, but let's stick to the simplest case: `&` for assignment.
-
-To handle cases where a variable is an l-value reference, we could propose `auto [&x&] = ...` to allow for the collapsing of references, or a more simplified approach: allow the compiler to handle reference collapsing automatically based on the type of the variable and the return type.
+TODO: compare `auto &[x, y]` to `
 
 #### Option 2: The `let` Keyword
 
@@ -264,7 +258,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNDcwMzUsMTE4NDAyMTQxOCwxMjEyNj
-A1OTQsMjA3NzQwMzcxMywtNTI3OTEwMjk5LC04NTU2MDc3OCwz
-MjIzNDU3ODBdfQ==
+eyJoaXN0b3J5IjpbNjU3MzUwMjE2LDExODQwMjE0MTgsMTIxMj
+YwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5OSwtODU1NjA3Nzgs
+MzIyMzQ1NzgwXX0=
 -->
