@@ -34,7 +34,7 @@ While effective, `std::tie` is not a language-level feature. Its use presents tw
 
 1.  **Standard Library Dependency:** `std::tie` is part of the standard library. Many developers, particularly in embedded systems, work on platforms where the standard library is either unavailable or has a significant footprint, making its use unfeasible. The core C++ language could provide a solution for this common problem.
     
-2.  **Cognitive Load:** Structured bindings are highly intuitive and now a core part of C++ pedagogy. In contrast, `std::tie` is a less-known utility function. Providing a language-level alternative aligns with the philosophy of "keeping the simple things simple" and reduces the amount of specialized knowledge required for common programming tasks.
+2.  **Cognitive Load:** Structured bindings are highly intuitive and now a core part of C++ pedagogy. In contrast, `std::tie` is a less-known utility function. Providing a language-level alternative aligns with the philosophy of "[keeping the simple things simple](https://youtu.be/HlzYbjjtMBI?si=25qHZZbXdIk4liyO)" and reduces the amount of specialized knowledge required for common programming tasks.
     
 
 This proposal aims to address these issues by extending structured binding syntax to support assignment to existing variables.
@@ -161,7 +161,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzQxMzA0MDUsLTMxMjc4Nzk0NiwxMT
+eyJoaXN0b3J5IjpbLTE5MzY1NjUwNjksLTMxMjc4Nzk0NiwxMT
 g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
 OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
 -->
