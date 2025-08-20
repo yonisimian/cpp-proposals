@@ -23,7 +23,7 @@ However, a core limitation of structured bindings is their inability to assign t
 ```
 MyPair<Token, Value> scan();
 
-for (auto [token, value] = scan; token != "\0"; std::tie(age, name) = users[++index]) {
+for (auto [token, value] = scan(); token != EOF; std::tie(token, value) = scan()) {
 	// ... do something
 }
 ```
@@ -188,6 +188,6 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNjIzNDIwLC01Mjc5MTAyOTksLTg1NT
-YwNzc4LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbMjA3NzQwMzcxMywtNTI3OTEwMjk5LC04NT
+U2MDc3OCwzMjIzNDU3ODBdfQ==
 -->
