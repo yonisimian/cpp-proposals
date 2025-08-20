@@ -4,7 +4,7 @@
 **Document Number:** PxxxxR0
 **Date:** August 23, 2025
 **Audience:** Evolution Working Group (EWG)
-**Authors:** Honestly idc, just add your names here :)
+**Authors:** Yehonatan Simian, ... honestly idc, just add your names here :)
 
 ----------
 
@@ -32,7 +32,7 @@ for (auto [token, value] = scan(); token != EOF; std::tie(token, value) = scan()
 
 While effective, `std::tie` is not a language-level feature. Its use presents two main challenges:
 
-1.  **Standard Library Dependency:** `std::tie` is part of the standard library. Many developers, particularly in embedded systems, work on platforms where the standard library is either unavailable or has a significant footprint, making its use unfeasible. The core C++ language should provide a solution for this common problem.
+1.  **Standard Library Dependency:** `std::tie` is part of the standard library. Many developers, particularly in embedded systems, work on platforms where the standard library is either unavailable or has a significant footprint, making its use unfeasible. The core C++ language could provide a solution for this common problem.
     
 2.  **Cognitive Load:** Structured bindings are highly intuitive and now a core part of C++ pedagogy. In contrast, `std::tie` is a less-known utility function. Providing a language-level alternative aligns with the philosophy of "keeping the simple things simple" and reduces the amount of specialized knowledge required for common programming tasks.
     
@@ -190,6 +190,6 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjU2NzAxNDAsMjA3NzQwMzcxMywtNT
-I3OTEwMjk5LC04NTU2MDc3OCwzMjIzNDU3ODBdfQ==
+eyJoaXN0b3J5IjpbMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNz
+kxMDI5OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
