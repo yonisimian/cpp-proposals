@@ -92,15 +92,15 @@ for (auto [token, value] = scan(); token != EOF; auto [&token, &value] = scan())
 C++
 
 ```
-Token token;
+Age age;
 
-MyTuple<Token, Value> get_info(); // pure function
+MyTuple<Age, Height> get_info(); // pure function
 
-auto [&token, value] = get_info(); // `token` is assigned, `value` is declared.
+auto [&age, height] = get_info(); // `age` is assigned, `height` is declared.
 
 // This is equivalent to:
-// token = std::get<1>(get_info());
-// Value value = std::get<0>(get_info());
+// age = std::get<0>(get_info());
+// Height height = std::get<1>(get_info());
 ```
 
 ### Alternative Proposals
@@ -191,7 +191,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5ODI2ODExNSwtMzEyNzg3OTQ2LDExOD
+eyJoaXN0b3J5IjpbMTE5ODQ2NzYyMSwtMzEyNzg3OTQ2LDExOD
 QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
 OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
