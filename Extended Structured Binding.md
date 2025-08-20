@@ -96,30 +96,11 @@ Token token;
 
 MyTuple<Token, Value> get_info(); // pure function
 
-// Proposed: `value` is declared, `token` is assigned.
-auto [&token, value] = get_info();
+auto [&token, value] = get_info(); // `token` is assigned, `value` is declared.
 
 // This is equivalent to:
-// Value value = std::get<0>(get_info());
 // token = std::get<1>(get_info());
-
-```
-
-**3. Reference to a new variable and assignment to an existing variable**
-
-C++
-
-```
-int x;
-std::tuple<int, std::string> get_user_data();
-
-// Proposed: 'name' is declared as a reference, 'x' is assigned
-[auto& name, assigns x] = get_user_data();
-
-// The above is equivalent to:
-// auto& name = std::get<0>(get_user_data());
-// x = std::get<1>(get_user_data());
-
+// Value value = std::get<0>(get_info());
 ```
 
 ### Alternative Proposals
@@ -210,7 +191,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjA4NTM4NzcsLTMxMjc4Nzk0NiwxMT
-g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
-OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbMTg5ODI2ODExNSwtMzEyNzg3OTQ2LDExOD
+QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
+OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
