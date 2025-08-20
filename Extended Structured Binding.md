@@ -103,24 +103,6 @@ auto [&age, height] = get_info(); // `age` is assigned, `height` is declared.
 // Height height = std::get<1>(get_info());
 ```
 
-### Alternative Proposals
-
-#### `using` keyword
-
-```
-int x;
-auto [using x, y] = get_values();
-```
-
-A bit less intuitive imo (Yoni).
-
-#### `let` keyword
-```
-int x;
-let [&x, y] = get_values();
-```
-More robust, yet has a potential of ambiguity with Pattern Matching.
-
 ----------
 
 ### Motivation and Use Cases
@@ -133,31 +115,6 @@ The most compelling technical motivation for this proposal is its applicability 
 
 Structured bindings are a well-loved feature for their intuitive nature. `std::tie` requires a separate header, a different syntax, and introduces a new concept (a function that returns a `tuple` of references) to solve a common problem. The proposed syntax leverages an existing, familiar pattern, reducing cognitive overhead and making code more consistent and easier to understand for newcomers and seasoned developers alike.
 
-#### 3. Performance in Loops
-
-In performance-critical code, especially within loops, creating and destroying objects can be costly. While the return value optimization (RVO) can mitigate this, ensuring that an existing variable is assigned to rather than a new one being created can be a clear signal to the compiler and can lead to more efficient code in some cases. The `[assigns var]` syntax makes it explicit that `var` is not being created, but assigned to.
-
-C++
-
-```
-// Imagine a function that is part of an outer loop
-std::tuple<std::vector<int>, bool> process_data_chunk(const Data& d);
-
-// Before this proposal
-std::vector<int> chunk; // Created outside the loop
-bool success;
-// In the loop
-std::tie(chunk, success) = process_data_chunk(data_stream);
-
-// With this proposal
-std::vector<int> chunk; // Created outside the loop
-bool success;
-// In the loop
-[assigns chunk, assigns success] = process_data_chunk(data_stream);
-
-```
-
-This explicit syntax helps document the intent of assignment rather than declaration.
 
 ----------
 
@@ -166,7 +123,7 @@ This explicit syntax helps document the intent of assignment rather than declara
 1.  **`[using x, y] = ...`**: The use of `using` was initially considered. However, `using` is an overloaded keyword in C++ with specific meanings (e.g., namespace and declaration directives). Reusing it as a contextual keyword could lead to parsing ambiguities and developer confusion. The proposed `assigns` keyword is less likely to collide with existing syntax and clearly states the intent.
     
 2.  **`[x, y] = ...` (without `auto`)**: This was also considered but would introduce ambiguities with existing syntax, such as lambdas. For example, `[x, y] = foo();` could be misread. The explicit keyword `assigns` prevents this ambiguity.
-    
+ 
 
 ----------
 
@@ -191,7 +148,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5ODQ2NzYyMSwtMzEyNzg3OTQ2LDExOD
+eyJoaXN0b3J5IjpbLTQ3NzgwNjcxNiwtMzEyNzg3OTQ2LDExOD
 QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
 OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
