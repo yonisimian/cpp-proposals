@@ -94,14 +94,14 @@ C++
 ```
 Token token;
 
-MyTuple<Token, Value> get_info() { return {42, 100}; }
+MyTuple<Token, Value> get_info(); // pure function
 
-// Proposed: `new_value` is declared, `token` is assigned.
-auto [new_value, &token] = get_info();
+// Proposed: `value` is declared, `token` is assigned.
+auto [&token, value] = get_info();
 
 // This is equivalent to:
-// int new_value = std::get<0>(get_info());
-// result_code = std::get<1>(get_info());
+// Value value = std::get<0>(get_info());
+// token = std::get<1>(get_info());
 
 ```
 
@@ -210,7 +210,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDc0MjcyMSwtMzEyNzg3OTQ2LDExOD
-QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
-OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbLTE0NjA4NTM4NzcsLTMxMjc4Nzk0NiwxMT
+g0MDIxNDE4LDEyMTI2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAy
+OTksLTg1NTYwNzc4LDMyMjM0NTc4MF19
 -->
