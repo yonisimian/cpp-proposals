@@ -21,10 +21,9 @@ C++17 introduced structured bindings, a powerful language feature that allows fo
 However, a core limitation of structured bindings is their inability to assign to pre-existing variables. The current approach requires the use of `std::tie` from the `<tuple>` header, as shown below:
 
 ```
-MyPair<Token, Value> *users = get_users();
-size_t index = 0;
+MyPair<Token, Value> scan();
 
-for (auto [age, name] = users[index]; *name != "\0"; std::tie(age, name) = users[++index]) {
+for (auto [token, value] = scan; token != "\0"; std::tie(age, name) = users[++index]) {
 	// ... do something
 }
 ```
@@ -189,6 +188,6 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMzNDk3NzU4LC01Mjc5MTAyOTksLTg1NT
+eyJoaXN0b3J5IjpbMTMzNjIzNDIwLC01Mjc5MTAyOTksLTg1NT
 YwNzc4LDMyMjM0NTc4MF19
 -->
