@@ -23,7 +23,7 @@ However, a core limitation of structured bindings is their inability to assign t
 ```
 #include <tuple>
 
-std::tuple<Token, Value> scan(); // scan new line on each
+std::tuple<Token, Value> scan(); // scans the next line on each invokation
 
 for (auto [token, value] = scan(); token != EOF; std::tie(token, value) = scan()) {
 	// ... start parsing
@@ -190,6 +190,6 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczMDY1NDQ5LDIwNzc0MDM3MTMsLTUyNz
-kxMDI5OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbLTE4NjU2NzAxNDAsMjA3NzQwMzcxMywtNT
+I3OTEwMjk5LC04NTU2MDc3OCwzMjIzNDU3ODBdfQ==
 -->
