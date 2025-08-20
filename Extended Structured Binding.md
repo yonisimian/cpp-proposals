@@ -1,146 +1,205 @@
-# Extended Structured Binding
 
-Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
+### C++ Proposal: Structured Bindings for Existing Variables
 
+**Document Number:** PxxxxR0
+**Date:** August 23, 2025
+**Audience:** Evolution Working Group (EWG)
+**Authors:** Honestly idc, just add your names here :)
 
-# Files
+----------
 
-StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
+### Abstract
 
-## Create files and folders
+This proposal introduces an extension to C++'s structured bindings, allowing for the assignment of values to existing variables. This provides a clean, consistent syntax that serves as a modern alternative to `std::tie`, particularly for environments where the standard library is unavailable, such as in embedded or bare-metal development.
 
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
+----------
 
-## Switch to another file
+### Introduction
 
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
+C++17 introduced structured bindings, a powerful language feature that allows for the decomposition of a tuple-like object into its constituent elements. The syntax `auto [x, y] = foo();` is a significant improvement in readability and conciseness over traditional methods.
 
-## Rename a file
+However, a core limitation of structured bindings is their inability to assign to pre-existing variables. The current approach requires the use of `std::tie` from the `<tuple>` header, as shown below:
 
-You can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.
+C++
 
-## Delete a file
+```
+#include <tuple>
+#include <string>
 
-You can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.
+// A function returning multiple values
+std::tuple<int, std::string> get_user_info() {
+  return {42, "Bjarne"};
+}
 
-## Export a file
+// Existing variables
+int user_id;
+std::string user_name;
 
-You can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.
+// Using std::tie to assign
+std::tie(user_id, user_name) = get_user_info();
 
-
-# Synchronization
-
-Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.
-
-There are two types of synchronization and they can complement each other:
-
-- The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device.
-	> To start syncing your workspace, just sign in with Google in the menu.
-
-- The file synchronization will keep one file of the workspace synced with one or multiple files in **Google Drive**, **Dropbox** or **GitHub**.
-	> Before starting to sync files, you must link an account in the **Synchronize** sub-menu.
-
-## Open a file
-
-You can open a file from **Google Drive**, **Dropbox** or **GitHub** by opening the **Synchronize** sub-menu and clicking **Open from**. Once opened in the workspace, any modification in the file will be automatically synced.
-
-## Save a file
-
-You can save any file of the workspace to **Google Drive**, **Dropbox** or **GitHub** by opening the **Synchronize** sub-menu and clicking **Save on**. Even if a file in the workspace is already synced, you can save it to another location. StackEdit can sync one file with multiple locations and accounts.
-
-## Synchronize a file
-
-Once your file is linked to a synchronized location, StackEdit will periodically synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be resolved.
-
-If you just have modified your file and you want to force syncing, click the **Synchronize now** button in the navigation bar.
-
-> **Note:** The **Synchronize now** button is disabled if you have no file to synchronize.
-
-## Manage file synchronization
-
-Since one file can be synced with multiple locations, you can list and manage synchronized locations by clicking **File synchronization** in the **Synchronize** sub-menu. This allows you to list and remove synchronized locations that are linked to your file.
-
-
-# Publication
-
-Publishing in StackEdit makes it simple for you to publish online your files. Once you're happy with a file, you can publish it to different hosting platforms like **Blogger**, **Dropbox**, **Gist**, **GitHub**, **Google Drive**, **WordPress** and **Zendesk**. With [Handlebars templates](http://handlebarsjs.com/), you have full control over what you export.
-
-> Before starting to publish, you must link an account in the **Publish** sub-menu.
-
-## Publish a File
-
-You can publish your file by opening the **Publish** sub-menu and by clicking **Publish to**. For some locations, you can choose between the following formats:
-
-- Markdown: publish the Markdown text on a website that can interpret it (**GitHub** for instance),
-- HTML: publish the file converted to HTML via a Handlebars template (on a blog for example).
-
-## Update a publication
-
-After publishing, StackEdit keeps your file linked to that publication which makes it easy for you to re-publish it. Once you have modified your file and you want to update your publication, click on the **Publish now** button in the navigation bar.
-
-> **Note:** The **Publish now** button is disabled if your file has not been published yet.
-
-## Manage file publication
-
-Since one file can be published to multiple locations, you can list and manage publish locations by clicking **File publication** in the **Publish** sub-menu. This allows you to list and remove publication locations that are linked to your file.
-
-
-# Markdown extensions
-
-StackEdit extends the standard Markdown syntax by adding extra **Markdown extensions**, providing you with some nice features.
-
-> **ProTip:** You can disable any **Markdown extension** in the **File properties** dialog.
-
-
-## SmartyPants
-
-SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
-
-|                |ASCII                          |HTML                         |
-|----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
-
-
-## KaTeX
-
-You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
-
-The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
-
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-
-> You can find more information about **LaTeX** mathematical expressions [here](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
-
-
-## UML diagrams
-
-You can render UML diagrams using [Mermaid](https://mermaidjs.github.io/). For example, this will produce a sequence diagram:
-
-```mermaid
-sequenceDiagram
-Alice ->> Bob: Hello Bob, how are you?
-Bob-->>John: How about you John?
-Bob--x Alice: I am good thanks!
-Bob-x John: I am good thanks!
-Note right of John: Bob thinks a long<br/>long time, so long<br/>that the text does<br/>not fit on a row.
-
-Bob-->Alice: Checking with John...
-Alice->John: Yes... John, how are you?
 ```
 
-And this will produce a flow chart:
+While effective, `std::tie` is not a language-level feature. Its use presents two main challenges:
 
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
+1.  **Standard Library Dependency:** `std::tie` is part of the standard library. Many developers, particularly in embedded systems, work on platforms where the standard library is either unavailable or has a significant footprint, making its use unfeasible. The core C++ language should provide a solution for this common problem.
+    
+2.  **Cognitive Load:** Structured bindings are highly intuitive and now a core part of C++ pedagogy. In contrast, `std::tie` is a less-known utility function. Providing a language-level alternative aligns with the philosophy of "keeping the simple things simple" and reduces the amount of specialized knowledge required for common programming tasks.
+    
+
+This proposal aims to address these issues by extending structured binding syntax to support assignment to existing variables.
+
+----------
+
+### Proposal
+
+We propose to extend structured binding syntax to allow for the use of pre-existing variables in the binding list. This is achieved by omitting the `auto` keyword and introducing a new contextual keyword, `assigns`, before the name of any variable that is to be assigned.
+
+#### Syntax
+
+The proposed syntax for a structured assignment is as follows:
+
+`[binding-list] = expression;`
+
+The `binding-list` would be a comma-separated list of:
+
+-   `assigns variable-name`: to assign to an existing variable.
+    
+-   `auto variable-name`: to declare and initialize a new variable.
+    
+-   `auto& variable-name`: to declare and initialize a new reference.
+    
+
+This allows for a hybrid approach, where some variables in the list are new and others are existing.
+
+#### Examples
+
+**1. Assigning to Existing Variables Only**
+
+C++
+
 ```
+int x;
+int y;
+std::pair<int, int> p = {10, 20};
+
+// Proposed: Assigns to existing variables x and y
+[assigns x, assigns y] = p;
+
+// The above is equivalent to:
+// x = p.first;
+// y = p.second;
+
+```
+
+**2. Hybrid Declaration and Assignment**
+
+C++
+
+```
+// Existing variables
+int result_code;
+std::string error_message;
+
+// A function that returns a new value and a value for an existing variable.
+std::tuple<int, int> get_info() { return {42, 100}; }
+
+// Proposed: `new_value` is declared, `result_code` is assigned.
+[auto new_value, assigns result_code] = get_info();
+
+// This is equivalent to:
+// int new_value = std::get<0>(get_info());
+// result_code = std::get<1>(get_info());
+
+```
+
+**3. Reference to a new variable and assignment to an existing variable**
+
+C++
+
+```
+int x;
+std::tuple<int, std::string> get_user_data();
+
+// Proposed: 'name' is declared as a reference, 'x' is assigned
+[auto& name, assigns x] = get_user_data();
+
+// The above is equivalent to:
+// auto& name = std::get<0>(get_user_data());
+// x = std::get<1>(get_user_data());
+
+```
+
+----------
+
+### Motivation and Use Cases
+
+#### 1. Embedded and Bare-Metal Systems
+
+The most compelling technical motivation for this proposal is its applicability in **constrained environments**. In projects for embedded systems, game consoles, or operating system kernels, a full C++ standard library is often unavailable. These environments lack headers like `<tuple>`, making `std::tie` inaccessible. A language-level feature provides a uniform, built-in solution that is always available.
+
+#### 2. Readability and Consistency
+
+Structured bindings are a well-loved feature for their intuitive nature. `std::tie` requires a separate header, a different syntax, and introduces a new concept (a function that returns a `tuple` of references) to solve a common problem. The proposed syntax leverages an existing, familiar pattern, reducing cognitive overhead and making code more consistent and easier to understand for newcomers and seasoned developers alike.
+
+#### 3. Performance in Loops
+
+In performance-critical code, especially within loops, creating and destroying objects can be costly. While the return value optimization (RVO) can mitigate this, ensuring that an existing variable is assigned to rather than a new one being created can be a clear signal to the compiler and can lead to more efficient code in some cases. The `[assigns var]` syntax makes it explicit that `var` is not being created, but assigned to.
+
+C++
+
+```
+// Imagine a function that is part of an outer loop
+std::tuple<std::vector<int>, bool> process_data_chunk(const Data& d);
+
+// Before this proposal
+std::vector<int> chunk; // Created outside the loop
+bool success;
+// In the loop
+std::tie(chunk, success) = process_data_chunk(data_stream);
+
+// With this proposal
+std::vector<int> chunk; // Created outside the loop
+bool success;
+// In the loop
+[assigns chunk, assigns success] = process_data_chunk(data_stream);
+
+```
+
+This explicit syntax helps document the intent of assignment rather than declaration.
+
+----------
+
+### Alternative Syntaxes Considered
+
+1.  **`[using x, y] = ...`**: The use of `using` was initially considered. However, `using` is an overloaded keyword in C++ with specific meanings (e.g., namespace and declaration directives). Reusing it as a contextual keyword could lead to parsing ambiguities and developer confusion. The proposed `assigns` keyword is less likely to collide with existing syntax and clearly states the intent.
+    
+2.  **`[x, y] = ...` (without `auto`)**: This was also considered but would introduce ambiguities with existing syntax, such as lambdas. For example, `[x, y] = foo();` could be misread. The explicit keyword `assigns` prevents this ambiguity.
+    
+
+----------
+
+### Implementation Notes
+
+This is a language extension, not a standard library addition. A compiler would need to implement this new parsing rule. The implementation would involve checking the variables in the `binding-list` against the variables in the current scope. If an existing variable is found with the `assigns` keyword, the compiler would generate code to perform an assignment using the variable's `operator=`. If `auto` is used, a new variable would be declared.
+
+----------
+
+### Previous Papers
+
+-   **P0144R2 - `Structured Bindings`**: This paper introduced structured bindings. Section 3.3 explicitly mentions that structured bindings should not be used for assignment to existing variables, stating, "We know of no use cases where this is better than using `std::tie`." This proposal provides new use cases (embedded systems) and a strong argument for uniform syntax, directly addressing the original paper's concern.
+    
+-   **P2392 - `C++ Standard Library Support for Structured Bindings`**: While not directly related to this proposal, Herb Sutter's paper and similar documents highlight the evolution of structured bindings and the community's interest in extending their utility.
+    
+
+----------
+
+### Conclusion
+
+This proposal for structured bindings for existing variables offers a clean, consistent, and powerful language feature. It solves a real-world problem for developers in constrained environments and provides a more intuitive syntax for all C++ programmers. The proposed syntax is explicit, avoids keyword ambiguity, and aligns with the modern direction of the C++ language.
+
+The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1NTYwNzc4LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbNzcyMDU1NzgzLC04NTU2MDc3OCwzMjIzND
+U3ODBdfQ==
 -->
