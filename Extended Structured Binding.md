@@ -87,8 +87,11 @@ auto [using x, y] = get_values();
 A bit less intuitive imo (Yoni).
 
 #### `let` keyword
-
-
+```
+int x;
+let [&x, y] = get_values();
+```
+More robust, yet has a potential 
 Both options have merit, but **Option 2 (the `let` keyword)** is the more robust and future-proof choice. The `&` symbol approach (Option 1) has potential for ambiguity, especially when considering more advanced reference types, and could lead to complex reference collapsing rules that are not immediately obvious to developers.
 
 The `let` keyword, on the other hand, provides a clear, non-ambiguous signal to the parser. The proposed syntax `let [&x, auto y] = get_pair();` is explicit and readable. It directly addresses the need to mix new and existing variables and aligns with the general direction of the C++ language.
@@ -237,7 +240,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTkwNjUzMDIsMTE4NDAyMTQxOCwxMj
-EyNjA1OTQsMjA3NzQwMzcxMywtNTI3OTEwMjk5LC04NTU2MDc3
-OCwzMjIzNDU3ODBdfQ==
+eyJoaXN0b3J5IjpbMjEwNzA1NDY4MywxMTg0MDIxNDE4LDEyMT
+I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
+LDMyMjM0NTc4MF19
 -->
