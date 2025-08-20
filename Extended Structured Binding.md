@@ -92,7 +92,7 @@ The `binding-list` would contain variables to be assigned to, as the `let` keywo
 
 **Parsing Analysis:**
 
-You are correct that parsing is a critical consideration. The C++ parser, being a greedy, top-down parser, needs to resolve ambiguities early. A statement beginning with `[` is ambiguous with a lambda capture list. However, a statement beginning with `let` is not. The moment the parser sees `let`, it can determine that the following `[` is the start of a structured binding list for assignment, not a lambda. This resolves the parsing ambiguity completely.
+The C++ parser, being a greedy, top-down parser, needs to resolve ambiguities early. A statement beginning with `[` is ambiguous with a lambda capture list. However, a statement beginning with `let` is not. The moment the parser sees `let`, it can determine that the following `[` is the start of a structured binding list for assignment, not a lambda. This resolves the parsing ambiguity for now.
 
 **Mixing New and Existing Variables:**
 
@@ -258,7 +258,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM4NTU1MTg4LDExODQwMjE0MTgsMTIxMj
-YwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5OSwtODU1NjA3Nzgs
-MzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbLTgwNzg1NTkzMSwxMTg0MDIxNDE4LDEyMT
+I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
+LDMyMjM0NTc4MF19
 -->
