@@ -92,7 +92,6 @@ for (auto [token, value] = scan(); token != EOF; auto [&token, &value] = scan())
 C++
 
 ```
-// Existing variables
 int result_code;
 std::string error_message;
 
@@ -213,7 +212,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxMjc4Nzk0NiwxMTg0MDIxNDE4LDEyMT
-I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
-LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbMzU4ODA0NTEyLC0zMTI3ODc5NDYsMTE4ND
+AyMTQxOCwxMjEyNjA1OTQsMjA3NzQwMzcxMywtNTI3OTEwMjk5
+LC04NTU2MDc3OCwzMjIzNDU3ODBdfQ==
 -->
