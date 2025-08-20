@@ -57,11 +57,8 @@ This option extends the `auto` structured binding syntax to use the `&` symbol i
 The `binding-list` would be a comma-separated list of:
 
 -   `name`: to declare a new variable.
-    
+
 -   `&name`: to assign to an existing variable.
-    
--   `&name&`: to collapse a reference.
-    
 
 **Explanation:**
 
@@ -77,7 +74,7 @@ C++
 
 ```
 int x;
-auto [y, &x] = get_pair(); // y is a new variable, x is assigned to
+auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
 
 ```
 
@@ -267,7 +264,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4NDg1MzQ2OSwxMTg0MDIxNDE4LDEyMT
-I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
-LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbMjExNDcwMzUsMTE4NDAyMTQxOCwxMjEyNj
+A1OTQsMjA3NzQwMzcxMywtNTI3OTEwMjk5LC04NTU2MDc3OCwz
+MjIzNDU3ODBdfQ==
 -->
