@@ -77,7 +77,17 @@ Also... discuss rvalue-references?
 
 ### Alternative Proposals
 
-#### `using` key
+#### `using` keyword
+
+```
+int x;
+auto [using x, y] = get_values();
+```
+
+A bit less intuitive imo (Yoni).
+
+#### `let` keyword
+
 
 Both options have merit, but **Option 2 (the `let` keyword)** is the more robust and future-proof choice. The `&` symbol approach (Option 1) has potential for ambiguity, especially when considering more advanced reference types, and could lead to complex reference collapsing rules that are not immediately obvious to developers.
 
@@ -227,7 +237,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NzA0NDIxNSwxMTg0MDIxNDE4LDEyMT
-I2MDU5NCwyMDc3NDAzNzEzLC01Mjc5MTAyOTksLTg1NTYwNzc4
-LDMyMjM0NTc4MF19
+eyJoaXN0b3J5IjpbLTExNTkwNjUzMDIsMTE4NDAyMTQxOCwxMj
+EyNjA1OTQsMjA3NzQwMzcxMywtNTI3OTEwMjk5LC04NTU2MDc3
+OCwzMjIzNDU3ODBdfQ==
 -->
