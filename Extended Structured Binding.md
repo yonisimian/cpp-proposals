@@ -92,14 +92,12 @@ for (auto [token, value] = scan(); token != EOF; auto [&token, &value] = scan())
 C++
 
 ```
-int result_code;
-std::string error_message;
+Token token;
 
-// A function that returns a new value and a value for an existing variable.
-std::tuple<int, int> get_info() { return {42, 100}; }
+MyTuple<Token, Value> get_info() { return {42, 100}; }
 
-// Proposed: `new_value` is declared, `result_code` is assigned.
-[auto new_value, assigns result_code] = get_info();
+// Proposed: `new_value` is declared, `token` is assigned.
+auto [new_value, &token] = get_info();
 
 // This is equivalent to:
 // int new_value = std::get<0>(get_info());
@@ -212,7 +210,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU4ODA0NTEyLC0zMTI3ODc5NDYsMTE4ND
-AyMTQxOCwxMjEyNjA1OTQsMjA3NzQwMzcxMywtNTI3OTEwMjk5
-LC04NTU2MDc3OCwzMjIzNDU3ODBdfQ==
+eyJoaXN0b3J5IjpbLTIwNDc0MjcyMSwtMzEyNzg3OTQ2LDExOD
+QwMjE0MTgsMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNzkxMDI5
+OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
 -->
