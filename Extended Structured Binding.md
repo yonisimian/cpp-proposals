@@ -41,7 +41,7 @@ This proposal aims to address these issues by extending structured binding synta
 
 ----------
 
-### Proposal
+### Proposal (Option #1)
 
 We propose to extend structured binding syntax to allow for the use of pre-existing variables in the binding list. This is achieved by omitting the `auto` keyword and introducing a new contextual keyword, `assigns`, before the name of any variable that is to be assigned.
 
@@ -190,6 +190,7 @@ This proposal for structured bindings for existing variables offers a clean, con
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMjYwNTk0LDIwNzc0MDM3MTMsLTUyNz
-kxMDI5OSwtODU1NjA3NzgsMzIyMzQ1NzgwXX0=
+eyJoaXN0b3J5IjpbMTE4NDAyMTQxOCwxMjEyNjA1OTQsMjA3Nz
+QwMzcxMywtNTI3OTEwMjk5LC04NTU2MDc3OCwzMjIzNDU3ODBd
+fQ==
 -->
