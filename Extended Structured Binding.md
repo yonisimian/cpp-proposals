@@ -1,5 +1,5 @@
 
-### C++ Proposal: Structured Bindings for Existing Variables
+### Structured Binding Assignments 
 
 - **Document Number:** PxxxxR0
 - **Date:** August 23, 2025
