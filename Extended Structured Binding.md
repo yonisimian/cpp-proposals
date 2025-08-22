@@ -76,18 +76,43 @@ std::pair<int, int> get_pair();
 int x, y;
 std::tie(x, y) = get_pair();
 ```
-</td>
-<td>
+</td><td>
 
- ```cpp
+```cpp
 
 std::pair<int, int> get_pair();
 int x, y;
 auto [&x, &y] = get_pair();
 ``` 
 
+</td></tr>
+<tr>
+<td>
+
+```cpp
+// scans the next line on each invokation
+std::tuple<Token, Value> scan(); 
+...
+for (
+    auto [token, value] = scan(); 
+    token != EOF; 
+    std::tie(token, value) = scan()
+) { // parse }
+```
 </td>
-</tr>
+<td>    
+
+```cpp
+// scans the next line on each invokation
+std::tuple<Token, Value> scan(); 
+...
+for (
+    auto [token, value] = scan(); 
+    token != EOF; 
+    auto [&token, &value] = scan()
+) { // parse }
+```
+</td></tr>
 </table>
 
 **Mixing New and Existing Variables:**
