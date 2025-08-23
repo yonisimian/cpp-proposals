@@ -62,6 +62,60 @@ The `&` symbol already signifies a reference in C++. By allowing it inside the s
 
 When an existing variable is prefixed with `&`, the compiler would find the variable in the current scope and assign the corresponding element of the tuple-like object to it using `operator=`. The `auto` keyword at the beginning of the statement would signal that this is a structured binding operation.
 
+----------
+
+### Examples
+<table><tr>
+<th class="col-6" >Before</th>
+<th class="col-6" >After</th></tr>
+<tr>
+<td>
+
+```cpp
+#include <tuple>
+std::pair<int, int> get_pair();
+int x, y;
+std::tie(x, y) = get_pair();
+```
+</td><td>
+
+```cpp
+
+std::pair<int, int> get_pair();
+int x, y;
+auto [&x, &y] = get_pair();
+``` 
+
+</td></tr>
+<tr>
+<td>
+
+```cpp
+// scans the next line on each invokation
+std::tuple<Token, Value> scan(); 
+...
+for (
+    auto [token, value] = scan(); 
+    token != EOF; 
+    std::tie(token, value) = scan()
+) { // parse }
+```
+</td>
+<td>    
+
+```cpp
+// scans the next line on each invokation
+std::tuple<Token, Value> scan(); 
+...
+for (
+    auto [token, value] = scan(); 
+    token != EOF; 
+    auto [&token, &value] = scan()
+) { // parse }
+```
+</td></tr>
+</table>
+
 **Mixing New and Existing Variables:**
 
 This syntax seamlessly allows for mixing new and existing variables, a key requirement.
