@@ -33,11 +33,12 @@ for (auto [token, value] = scan(); token != EOF; std::tie(token, value) = scan()
 }
 ```
 
-While effective, `std::tie` is not a language-level feature. Its use presents two main challenges:
+While effective, `std::tie` is not a language-level feature. Its use presents three main challenges:
 
 1.  **Standard Library Dependency:** `std::tie` is part of the standard library. Many developers, particularly in embedded systems, work on platforms where the standard library is either unavailable or has a significant footprint, making its use unfeasible. The core C++ language could provide a solution for this common problem.
     
-2.  **Cognitive Load:** Structured bindings are highly intuitive and now a core part of C++ pedagogy. In contrast, `std::tie` is a less-known utility function. Providing a language-level alternative aligns with the philosophy of "[keeping the simple things simple](https://youtu.be/HlzYbjjtMBI?si=25qHZZbXdIk4liyO)" and reduces the amount of specialized knowledge required for common programming tasks.
+2.  **Cognitive Load:** Structured bindings are highly intuitive and now a core part of C++ pedagogy. Providing a language-level alternative to std::tie reduces the amount of specialized knowledge required for common programming tasks.
+3. **Only exisintg variables:** `std::tie` can only be used with existing variables, while structured bindings can only declare new ones. A unified syntax that allows both would enhance code clarity and reduce the need for multiple constructs to achieve similar goals.
     
 
 This proposal aims to address these issues by extending structured binding syntax to support assignment to existing variables.
