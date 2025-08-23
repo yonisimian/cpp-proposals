@@ -1,10 +1,13 @@
 
 ### Structured Binding Assignments 
 
-- **Document Number:** PxxxxR0
-- **Date:** August 23, 2025
-- **Audience:** Evolution Working Group (EWG)
-- **Authors:** Yehonatan Simian, ... (add your names here)
+- Document #: PxxxxR0
+- Date: 2025-08-23
+- Project: Programming Language C++
+- Audience: EWGI, EWG
+- Reply-to: 
+  - Yehonatan Simian <yonisimian@gmail.com>
+  - Ran Regev <regev.ran@gmail.com>
 
 ----------
 
