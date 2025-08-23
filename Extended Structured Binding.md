@@ -9,13 +9,9 @@
   - Yehonatan Simian <yonisimian@gmail.com>
   - Ran Regev <regev.ran@gmail.com>
 
-----------
-
 ### Abstract
 
 This proposal introduces an extension to C++'s structured bindings, allowing for the assignment of values to existing variables. This provides a clean, consistent syntax that serves as a modern alternative to `std::tie`, particularly for environments where the standard library is unavailable, such as in embedded or bare-metal development.
-
-----------
 
 ### Introduction
 
@@ -42,8 +38,6 @@ While effective, `std::tie` is not a language-level feature. Its use presents th
     
 
 This proposal aims to address these issues by extending structured binding syntax to support assignment to existing variables.
-
-----------
 
 ### Proposal
 
@@ -156,8 +150,6 @@ auto [&age, height] = get_info(); // `age` is assigned, `height` is declared.
 // Height height = std::get<1>(get_info());
 ```
 
-----------
-
 ### Motivation and Use Cases
 
 #### 1. Embedded and Bare-Metal Systems
@@ -168,8 +160,6 @@ The most compelling technical motivation for this proposal is its applicability 
 
 Structured bindings are a well-loved feature for their intuitive nature. `std::tie` requires a separate header, a different syntax, and introduces a new concept (a function that returns a `tuple` of references) to solve a common problem. The proposed syntax leverages an existing, familiar pattern, reducing cognitive overhead and making code more consistent and easier to understand for newcomers and seasoned developers alike.
 
-
-----------
 
 ### Alternative Syntaxes Considered
 
@@ -190,13 +180,9 @@ let [&x, y] = get_values();
 More robust, yet has a potential of ambiguity with Pattern Matching.
 
 
-----------
-
 ### Implementation Notes
 
 This is a language extension, not a standard library addition. A compiler would need to implement this new parsing rule. The implementation would involve checking the variables in the `binding-list` against the variables in the current scope. If an existing variable is found with the `assigns` keyword, the compiler would generate code to perform an assignment using the variable's `operator=`. If `auto` is used, a new variable would be declared.
-
-----------
 
 ### Previous Papers
 
@@ -205,8 +191,6 @@ This is a language extension, not a standard library addition. A compiler would 
     
 -   **P2392 - `C++ Standard Library Support for Structured Bindings`**: While not directly related to this proposal, Herb Sutter's paper and similar documents highlight the evolution of structured bindings and the community's interest in extending their utility.
     
-
-----------
 
 ### Conclusion
 
