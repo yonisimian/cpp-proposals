@@ -47,17 +47,14 @@ This proposal aims to address these issues by extending structured binding synta
 
 ### Proposal
 
-Extend the `auto` structured binding syntax to use the `&` symbol inside the binding list to denote a binding to an existing variable.
+Extend structured binding syntax to optinally use the `&` symbol for elements in the _sb-identifier-list_ inside the binding list to denote a binding to an existing variable.
 
-**Syntax:**
-
-`auto [binding-list] = expression;`
-
-The `binding-list` would be a comma-separated list of:
-
--   `name`: to declare a new variable.
-
--   `&name`: to assign to an existing variable.
+The main difference from current syntax is the ability to use `&` before a variable name in the structured binding list to indicate that the variable is already declared and should be assigned to and not initialized.<br>
+**Example**
+```
+int x;
+auto [&x, y] = get_pair(); // y is a new variable, x is assigned to
+```
 
 **Explanation:**
 
