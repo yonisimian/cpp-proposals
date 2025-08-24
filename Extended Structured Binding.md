@@ -186,17 +186,22 @@ This is a language extension, not a standard library addition. A compiler would 
 
 ### Previous Papers
 
--   **P0144R2 - `Structured Bindings`**: This paper introduced structured bindings. Section 3.3 explicitly mentions that structured bindings should not be used for assignment to existing variables "at least for now", see quote below. This proposal provides a use case (embedded systems) and a strong argument for uniform syntax, directly addressing the original paper's concern.
+-   **[P0144R2](#references) - `Structured Bindings`**: This paper introduced structured bindings. Section 3.3 explicitly mentions that structured bindings should not be used for assignment to existing variables "at least for now", see quote below. This proposal provides a use case (embedded systems) and a strong argument for uniform syntax, directly addressing the original paper's concern.
 > We know of no use cases where this is better than using `std::tie`, [...] This can always be proposed separately later as a pure extension if desired.
     
--   **P2392 - `C++ Standard Library Support for Structured Bindings`**: While not directly related to this proposal, Herb Sutter's paper and similar documents highlight the evolution of structured bindings and the community's interest in extending their utility.
-    
+\>>>>> Required FIX start: Provide a correct link and paper number
+-   **P2392 - `C++ Standard Library Support for Structured Bindings`**: While not directly related to this proposal, Herb Sutter's paper and similar documents highlight the evolution of structured bindings and the community's interest in extending their utility.<br>
+
+<<<<< Required FIX end: Provide a correct link and paper number
 
 ### Conclusion
 
 This proposal for structured bindings for existing variables offers a clean, consistent, and powerful language feature. It solves a real-world problem for developers in constrained environments and provides a more intuitive syntax for all C++ programmers. The proposed syntax is explicit, avoids keyword ambiguity, and aligns with the modern direction of the C++ language.
 
 The working group is encouraged to discuss this proposal and provide feedback on the proposed syntax and rationale.
+
+### References
+-   [P0144R2 - Structured Bindings](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0144r2.pdf)
 
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTcxMTA5MjYyMSwtMzEyNzg3OTQ2LDExOD
