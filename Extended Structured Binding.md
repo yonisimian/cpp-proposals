@@ -110,6 +110,33 @@ for (
 </td></tr>
 </table>
 
+
+
+### Examples From the Field
+[llvm PassBuilder](https://github.com/llvm/llvm-project/blob/main/llvm/lib/Passes/PassBuilder.cpp#L634)
+```diff
+Expected<bool> PassBuilder::parseSinglePassOption(StringRef Params,
+                                                  StringRef OptionName,
+                                                  StringRef PassName) {
+  bool Result = false;
+  while (!Params.empty()) {
+-    StringRef ParamName;
+-    std::tie(ParamName, Params) = Params.split(';');
++   auto& [ParamName, &Params] = Params.split(';');
+
+    if (ParamName == OptionName) {
+      Result = true;
+    } else {
+      return make_error<StringError>(
+          formatv("invalid {} pass parameter '{}'", PassName, ParamName).str(),
+          inconvertibleErrorCode());
+    }
+  }
+  return Result;
+}
+```
+
+
 **Mixing New and Existing Variables:**
 
 This syntax seamlessly allows for mixing new and existing variables, a key requirement.
