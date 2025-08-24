@@ -113,6 +113,7 @@ for (
 
 
 ### Examples From the Field
+1.
 [llvm PassBuilder](https://github.com/llvm/llvm-project/blob/main/llvm/lib/Passes/PassBuilder.cpp#L634)
 ```diff
 Expected<bool> PassBuilder::parseSinglePassOption(StringRef Params,
@@ -134,6 +135,21 @@ Expected<bool> PassBuilder::parseSinglePassOption(StringRef Params,
   }
   return Result;
 }
+```
+
+2.
+scylladb:  repair/row_level.cc:L300
+```diff
+- mutation_reader rd(nullptr);
+- std::tie(rd, _reader_handle) = make_manually_paused_evictable_reader(
++ auto& [rd, &_reader_handle] = make_manually_paused_evictable_reader(
+    std::move(ms),
+    _schema,
+    _permit,
+    _range,
+    _schema->full_slice(),
+    {},
+    mutation_reader::forwarding::no);
 ```
 
 
