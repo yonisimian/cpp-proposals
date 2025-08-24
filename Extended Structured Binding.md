@@ -152,6 +152,14 @@ scylladb:  repair/row_level.cc:L300
     mutation_reader::forwarding::no);
 ```
 
+3.
+tools/scylla-nodetool.cc:L2209
+```diff
+- std::tie(params["kn"], params["cf"]) = *split_kt(kn_msg);
++ auto [&params["kn"], &params["cf"]] = *split_kt(kn_msg);
+                               ----^^--- potential confusion with attributes 
+```
+
 
 **Mixing New and Existing Variables:**
 
