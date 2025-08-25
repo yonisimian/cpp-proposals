@@ -1,7 +1,7 @@
 
 ### Structured Binding Assignments 
 
-- Document #: PxxxxR0
+- Document #: P3817R0
 - Date: 2025-08-23
 - Project: Programming Language C++
 - Audience: EWGI, EWG
@@ -73,7 +73,7 @@ When an existing variable is prefixed with `&`, the compiler would find the vari
 ### Examples
 <table><tr>
 <th class="col-6" >Before</th>
-<th class="col-6" >After</th></tr>
+<th class="col-6" >With P3817R0</th></tr>
 <tr>
 <td>
 
