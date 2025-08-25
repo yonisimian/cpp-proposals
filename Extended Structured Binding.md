@@ -9,9 +9,21 @@
   - Yehonatan Simian <yonisimian@gmail.com>
   - Ran Regev <regev.ran@gmail.com>
 
-### Abstract
+### History
 
-This proposal introduces an extension to C++'s structured bindings, allowing for the assignment of values to existing variables. This provides a clean, consistent syntax that serves as a modern alternative to `std::tie`, particularly for environments where the standard library is unavailable, such as in embedded or bare-metal development.
+R0: Initial version
+
+----------
+
+### Abstract
+This proposal introduces an extension to C++'s structured bindings, allowing for the assignment of values to existing variables.
+
+### Motivation
+This section is pending on https://github.com/yonisimian/cpp-proposals/issues/5 <br>
+Allowing assignment for existing variables provides the following benefits:
+1. It is particularly useful for environments where the standard library is unavailable, such as in embedded or bare-metal development.
+2. The suggested syntax is more intuitive and easier to learn than `std::tie`, reducing cognitive load for developers.
+3. Allows mixing of new variable declarations and assignments to existing variables in a single, concise statement.
 
 ### Introduction
 
