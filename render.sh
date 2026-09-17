@@ -65,6 +65,8 @@ CSS=$(cat <<'EOF'
   :not(pre) > code                               { background-color: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; }
   #semantics-summary td, #semantics-summary th   { border: 1px solid #aaa; vertical-align: middle; }
   #semantics-summary td:first-child              { width: 18em; }
+  #references-table                              { width: auto; }
+  #references-table td, #references-table code    { white-space: nowrap; }
   pre.sourceCode.diff .va { display: block; background-color: #e6ffe6; color: #006600; }
   pre.sourceCode.diff .st { display: block; background-color: #ffe6e6; color: #cc0000; }
 </style>
