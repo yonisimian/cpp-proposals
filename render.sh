@@ -102,7 +102,7 @@ echo "$CSS" > /tmp/_p3817_css.html
 echo "$PREPROC" | pandoc - \
   -s \
   --syntax-highlighting=tango \
-  --metadata title="P3817R0 — Structured Binding Assignments" \
+  --metadata title="Structured Binding Assignments" \
   --toc \
   -H /tmp/_p3817_css.html \
   -o "$OUTPUT"
